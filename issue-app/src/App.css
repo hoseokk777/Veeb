@@ -401,9 +401,7 @@
   overflow-x: hidden;
   padding: 1rem;
   padding-bottom: 160px; /* 하단 입력창 + 이미지 미리보기 공간 확보 */
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  display: block;
 }
 
 .issues-list::-webkit-scrollbar {
@@ -630,9 +628,19 @@
 /* ============================================
    이슈 카드 - Glassmorphism
    ============================================ */
+/* 카드: framer-motion 인라인 position:absolute 강제 차단 */
 .issue-card {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 0.75rem !important;
+  transform: none;
   background: var(--veeb-surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

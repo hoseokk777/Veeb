@@ -1461,31 +1461,17 @@ function App() {
               </>
             )}
           </div>
-        ) : (() => {
-          const isFilterTransition = prevFilterRef.current !== filterKey
-          return (
-          <AnimatePresence initial={false}>
-            {filteredIssues.map((issue, index) => {
-              const stagger = isFilterTransition ? index * 0.05 : 0
-              return (
-              <motion.div
-                key={isFilterTransition ? `${filterKey}-${issue._stableKey || issue.id}` : (issue._stableKey || issue.id)}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.3, ease: "easeOut", delay: stagger }
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15 }
-                }}
+        ) : (
+          <>
+            {filteredIssues.map((issue) => (
+              <div
+                key={issue._stableKey || issue.id}
                 className={`issue-card${filter === 'popular' && (issue.views || 0) >= 5 ? ' hot-card' : ''}${alertKeywords.length > 0 && alertKeywords.some(kw => (issue.title || '').includes(kw)) ? ' kw-match' : ''}${getInfluenceLevel(getInfluenceScore(issue.device_id)).label === '레전드' ? ' legend-card' : ''}`}
                 ref={(el) => {
                   if (el && observerRef.current) {
                     el.dataset.issueId = issue.id
                     observerRef.current.observe(el)
                   } else if (!el) {
-                    // 언마운트 → 타이머 취소
                     const tid = viewTimersRef.current.get(issue.id)
                     if (tid) { clearTimeout(tid); viewTimersRef.current.delete(issue.id) }
                   }
@@ -1514,12 +1500,10 @@ function App() {
                     />
                   )
                 })()}
-              </motion.div>
-              )
-            })}
-          </AnimatePresence>
-          )
-        })()}
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       <div className="bottom-bar">
