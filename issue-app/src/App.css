@@ -110,6 +110,7 @@
 .filter-section {
   background-color: var(--veeb-surface-solid);
   border-bottom: 1px solid var(--veeb-border);
+  overflow: hidden;
 }
 
 /* 1줄: 범위 탭 (전체 / 인기 / 내 주변) */
@@ -280,6 +281,7 @@
   background: var(--veeb-surface-solid);
   border-bottom: 1px solid var(--veeb-border);
   padding: 0.55rem 1rem 0.6rem;
+  overflow: hidden;
 }
 
 .keyword-header {
@@ -594,6 +596,7 @@
   display: flex;
   gap: 0.35rem;
   overflow-x: auto;
+  max-width: 100%;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
