@@ -1464,29 +1464,20 @@ function App() {
         ) : (() => {
           const isFilterTransition = prevFilterRef.current !== filterKey
           return (
-          <AnimatePresence initial={false} mode="popLayout">
+          <AnimatePresence initial={false}>
             {filteredIssues.map((issue, index) => {
-              const stagger = isFilterTransition ? index * 0.1 : 0
+              const stagger = isFilterTransition ? index * 0.05 : 0
               return (
               <motion.div
                 key={isFilterTransition ? `${filterKey}-${issue._stableKey || issue.id}` : (issue._stableKey || issue.id)}
-                layout
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
-                  y: 0,
-                  transition: {
-                    opacity: { duration: 0.45, ease: "easeOut", delay: stagger },
-                    y: { type: "spring", stiffness: 80, damping: 14, mass: 0.8, delay: stagger },
-                    layout: { type: "spring", stiffness: 200, damping: 26 }
-                  }
+                  transition: { duration: 0.3, ease: "easeOut", delay: stagger }
                 }}
                 exit={{
                   opacity: 0,
-                  transition: { duration: 0.08 }
-                }}
-                transition={{
-                  layout: { type: "spring", stiffness: 200, damping: 26 }
+                  transition: { duration: 0.15 }
                 }}
                 className={`issue-card${filter === 'popular' && (issue.views || 0) >= 5 ? ' hot-card' : ''}${alertKeywords.length > 0 && alertKeywords.some(kw => (issue.title || '').includes(kw)) ? ' kw-match' : ''}${getInfluenceLevel(getInfluenceScore(issue.device_id)).label === '레전드' ? ' legend-card' : ''}`}
                 ref={(el) => {

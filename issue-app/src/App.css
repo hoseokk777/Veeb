@@ -631,6 +631,8 @@
    이슈 카드 - Glassmorphism
    ============================================ */
 .issue-card {
+  display: flex;
+  flex-direction: column;
   background: var(--veeb-surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -638,10 +640,8 @@
   border-radius: 14px;
   padding: 1rem;
   overflow: hidden;
-  min-width: 0; /* flex 자식 가로 넘침 방지 */
+  min-width: 0;
   transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-  contain: layout style;
-  will-change: transform, opacity;
 }
 
 .issue-card:hover {
@@ -838,19 +838,17 @@
    레이아웃 시프트 방지: 로드 전후 컨테이너 크기 불변
    ============================================ */
 .issue-image-container {
-  position: relative;
   margin-bottom: 0.75rem;
   border-radius: 10px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
   background: rgba(8, 8, 18, 0.8);
   cursor: pointer;
 }
 
-/* 스켈레톤 shimmer */
+/* 스켈레톤 shimmer — 이미지 로드 전 높이 확보 */
 .image-skeleton {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   background: linear-gradient(
     90deg,
     rgba(124, 92, 252, 0.04) 0%,
@@ -865,9 +863,9 @@
   transition: opacity 0.4s ease;
 }
 
-/* 로드 완료 → 스켈레톤 페이드아웃 */
+/* 로드 완료 → 스켈레톤 숨김 */
 .issue-image-container.has-loaded .image-skeleton {
-  opacity: 0;
+  display: none;
 }
 
 @keyframes skeleton-shimmer {
@@ -875,22 +873,18 @@
   100% { background-position: -200% 0; }
 }
 
-/* 이미지: 항상 absolute, 컨테이너 채움, contain으로 잘림 방지 */
+/* 이미지: Normal Flow, 가로 꽉 채움, 높이 자동 */
 .issue-image {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   border-radius: 10px;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 1;
 }
 
-/* 로드 완료: opacity만 변경 (position/height 불변 → 레이아웃 시프트 없음) */
+/* 로드 완료 */
 .issue-image.loaded {
   opacity: 1;
 }
