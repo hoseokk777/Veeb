@@ -1,5 +1,5 @@
 // Veeb Service Worker — PWA 오프라인 셸 + 네트워크 우선 캐싱
-const CACHE_NAME = 'veeb-v5'
+const CACHE_NAME = 'veeb-v6'
 const SHELL_ASSETS = ['/', '/index.html']
 
 // 설치: 앱 셸 캐싱
