@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- maskable: 안전 영역(내부 80%) 안에 콘텐츠 배치 -->
+  <rect width="512" height="512" fill="#0B0B14"/>
+  <text x="256" y="300" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="220" font-weight="800" fill="#7C5CFC">V</text>
+  <circle cx="370" cy="155" r="28" fill="#4ECDC4" opacity="0.9"/>
+  <circle cx="370" cy="155" r="11" fill="#0B0B14"/>
+  <circle cx="374" cy="150" r="4" fill="#fff" opacity="0.8"/>
+</svg>
