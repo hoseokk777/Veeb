@@ -47,16 +47,19 @@
 /* 전체 컨테이너 */
 .app-container {
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   padding: 0;
   /* iOS standalone: 노치/다이나믹 아일랜드 대응 */
   padding-top: env(safe-area-inset-top);
   height: 100vh;
+  height: 100dvh; /* 모바일 동적 뷰포트 */
   display: flex;
   flex-direction: column;
   background-color: var(--veeb-bg);
   color: var(--veeb-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
 }
 
 /* 헤더 - sticky + 블러 */
@@ -395,6 +398,7 @@
 .issues-list {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1rem;
   padding-bottom: 160px; /* 하단 입력창 + 이미지 미리보기 공간 확보 */
   display: flex;
@@ -633,6 +637,8 @@
   border: 1px solid var(--veeb-border);
   border-radius: 14px;
   padding: 1rem;
+  overflow: hidden;
+  min-width: 0; /* flex 자식 가로 넘침 방지 */
   transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
   contain: layout style;
   will-change: transform, opacity;
@@ -1105,6 +1111,7 @@
   transform: translateX(-50%);
   max-width: 600px;
   width: 100%;
+  overflow: hidden;
   background: rgba(11, 11, 20, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
