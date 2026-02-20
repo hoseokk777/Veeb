@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 
     <!-- PWA 기본 -->
-    <link rel="manifest" href="/manifest.json?v=4" />
-    <meta name="theme-color" content="#0B0B14" />
+    <link rel="manifest" href="/manifest.json?v=5" />
+    <meta name="theme-color" content="#7C3AED" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Veeb" />
 
@@ -14,21 +14,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Veeb" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon-final.png?v=4" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-final-120.png?v=4" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-final-152.png?v=4" />
-    <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-final-167.png?v=4" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-final-180.png?v=4" />
+    <link rel="apple-touch-icon" href="/apple-icon-180.png?v=5" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120.png?v=5" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png?v=5" />
 
     <!-- 파비콘 -->
-    <link rel="icon" href="/favicon-final.ico?v=4" sizes="32x32" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-final-192.png?v=4" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/icon-final-96.png?v=4" />
+    <link rel="icon" href="/favicon.ico?v=5" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192.png?v=5" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/android-icon-96.png?v=5" />
 
     <!-- 기타 모바일 -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-TileColor" content="#0B0B14" />
-    <meta name="msapplication-TileImage" content="/icon-final-144.png?v=4" />
+    <meta name="msapplication-TileColor" content="#7C3AED" />
+    <meta name="msapplication-TileImage" content="/android-icon-144.png?v=5" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,7 +37,6 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      // 서비스 워커 등록
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(() => {})
